@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Test 2 HTML</h1>
+
+  <h1 id="show"></h1>
+
+  <div>
+    <button id="incBtn">INC</button>
+    <button id="decBtn">DEC</button>
+  </div>
+
+  <script>
+
+    // js는 함수 안에 함수 정의 가능 -> return / parameter로 전달 가능
+    // js 일급 객체: 변수가 쓰일 수 있는 공간에 함수가 쓰일 수 있음
+    // js는 참조하는 변수를 명시하지 않고도 바깥 쪽에 있는 변수를 사용할 수 있음 (java처럼 this X) = Closure (내가 암묵적으로 참고하고 있는 변수)
+    // js는 함수 안에 변수에 접근할 수 없음 => 진정한 private의 의미로 생각하면 됨(정보의 은닉)
+    // 접근 제한자 -> 호출을 주고 받는 사람의 권한을 체크해 주는 것 => js는 접근 제한자의 개념이 없음
+    // js 모듈 패턴
+
+    function Nums () {
+      let num = 1
+
+      function inc () {
+        num += 1
+        console.log("inc")
+      }
+
+      function dec () {
+        num -= 1
+        console.log("dec")
+      }
+
+      return {inc:inc, dec:dec}
+    }
+
+      const obj1 = Nums()
+      console.log(obj1)
+
+      obj1.inc()
+      obj1.dec()
+
+
+
+
+    // ===============================================================================
+    // // 모든 변수는 윈도우에 달라 붙음
+    // // 어떤 변수가 하나 있음(데이터)
+    // // let은 스코프가 다름 / var는 정통적인 방식
+    // let num = 1
+
+    // // 얘를 바꾸고 싶음(기능)
+    // // 플러스
+    // function inc () {
+    //   num += 1
+
+    // }
+    // // 마이너스
+    // function dec () {
+    //   num -= 1
+    // }
+
+    
+    // // 데이터는 변경됐지만, 화면은 변경되지 않음 => MVC 구조 -> View와 Model이 따로 분리됨
+    // document.querySelector('#incBtn').addEventListener("click", e => { 
+    //   inc() 
+    //   rerender()
+    // },false)
+
+    // // 항상 지금 현재 있는 데이터로 바꿔 줌
+    // function rerender() {
+      // document.querySelector('#show').innerHTML = num
+    //}
+
+  </script>
+</body>
+</html>
